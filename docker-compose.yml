@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  oola-app:
+    build: .
+    container_name: oola-platform
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - DB_PATH=/app/data/oola.db
+    restart: unless-stopped
+    command: npm start

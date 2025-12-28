@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOLA - Collaborative Story Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav id="navbar" style="display: none;">
+            <div class="nav-container">
+                <h1>📚 OOLA</h1>
+                <div class="nav-links">
+                    <a href="#" onclick="showPage('home')">Home</a>
+                    <a href="#" onclick="showPage('stories')">Stories</a>
+                    <a href="#" onclick="showPage('create')">Create Story</a>
+                    <span id="user-info"></span>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page active">
+            <div class="auth-container">
+                <h1>📚 Welcome to OOLA</h1>
+                <p class="tagline">Where stories are written together</p>
+                
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="showAuthTab('login')">Login</button>
+                    <button class="tab-btn" onclick="showAuthTab('register')">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form">
+                    <input type="text" id="login-username" placeholder="Username" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                    <div id="login-error" class="error"></div>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form" style="display: none;">
+                    <input type="text" id="reg-username" placeholder="Username" required>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Password" required>
+                    <input type="text" id="reg-penname" placeholder="Pen Name (optional)">
+                    <select id="reg-role" required>
+                        <option value="">Select Role</option>
+                        <option value="author">Author</option>
+                        <option value="reader">Reader</option>
+                        <option value="artist">Artist</option>
+                    </select>
+                    <button type="submit">Create Account</button>
+                    <div id="register-error" class="error"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home-page" class="page">
+            <div class="container">
+                <h1>Welcome to OOLA</h1>
+                <div class="welcome-content">
+                    <div class="info-card">
+                        <h3>🖋️ For Authors</h3>
+                        <p>Check out stories, add your contribution (1000-1250 words), and pass it on!</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📖 For Readers</h3>
+                        <p>Discover collaborative stories written by multiple authors.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎨 For Artists</h3>
+                        <p>Create illustrations for stories and help bring them to life!</p>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat-box">
+                        <h2 id="total-stories">0</h2>
+                        <p>Total Stories</p>
+                    </div>
+                    <div class="stat-box">
+                        <h2 id="available-stories">0</h2>
+                        <p>Available to Write</p>
+                    </div>
+                    <div class="stat-box">
+                        <h2 id="finished-stories">0</h2>
+                        <p>Completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stories Page -->
+        <div id="stories-page" class="page">
+            <div class="container">
+                <h1>All Stories</h1>
+                <div class="filters">
+                    <button onclick="filterStories('all')" class="filter-btn active">All</button>
+                    <button onclick="filterStories('available')" class="filter-btn">Available</button>
+                    <button onclick="filterStories('checked_out')" class="filter-btn">In Progress</button>
+                    <button onclick="filterStories('finished')" class="filter-btn">Finished</button>
+                </div>
+                <div id="stories-list" class="stories-grid"></div>
+            </div>
+        </div>
+
+        <!-- Create Story Page -->
+        <div id="create-page" class="page">
+            <div class="container">
+                <h1>Create New Story</h1>
+                <form id="create-story-form" class="create-form">
+                    <input type="text" id="story-title" placeholder="Story Title" required>
+                    
+                    <select id="story-language" required>
+                        <option value="">Select Language</option>
+                    </select>
+                    
+                    <select id="story-genre" required>
+                        <option value="">Select Genre</option>
+                    </select>
+                    
+                    <textarea id="story-theme" placeholder="Describe the theme (required)" rows="3" required></textarea>
+                    
+                    <textarea id="story-plot" placeholder="Initial plot/opening (optional - you can start writing now or let others begin)" rows="5"></textarea>
+                    
+                    <div class="word-count">
+                        <span id="plot-word-count">0</span> words
+                    </div>
+                    
+                    <button type="submit">Create Story</button>
+                    <div id="create-error" class="error"></div>
+                    <div id="create-success" class="success"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
