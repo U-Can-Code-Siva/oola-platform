@@ -137,6 +137,59 @@
                 </form>
             </div>
         </div>
+
+        <!-- Story Detail Page -->
+        <div id="story-detail-page" class="page">
+            <div class="container">
+                <button onclick="showPage('stories')" class="back-btn">← Back to Stories</button>
+                
+                <div id="story-header"></div>
+                
+                <div class="action-section" id="action-section">
+                    <!-- Checkout/Editor buttons will appear here -->
+                </div>
+                
+                <div id="story-contributors"></div>
+                
+                <div id="story-content-display" class="story-content">
+                    <h2>Story Content</h2>
+                    <div id="story-text"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Story Editor Page -->
+        <div id="editor-page" class="page">
+            <div class="container">
+                <button onclick="cancelEdit()" class="back-btn">← Cancel</button>
+                
+                <h1>Write Your Contribution</h1>
+                
+                <div class="editor-info">
+                    <h3 id="editor-story-title"></h3>
+                    <p id="editor-expires"></p>
+                </div>
+                
+                <div class="editor-section">
+                    <h3>Current Story</h3>
+                    <div id="current-story-content" class="current-content"></div>
+                </div>
+                
+                <div class="editor-section">
+                    <h3>Your Contribution</h3>
+                    <textarea id="contribution-text" placeholder="Write your contribution here (1000-1250 words, ±5%)" rows="20"></textarea>
+                    
+                    <div class="word-counter">
+                        <span id="contribution-word-count" class="word-count-display">0</span> words
+                        <span id="word-count-status" class="word-status"></span>
+                    </div>
+                    
+                    <button onclick="submitContribution()" class="submit-btn">Submit Contribution</button>
+                    <div id="editor-error" class="error"></div>
+                    <div id="editor-success" class="success"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>

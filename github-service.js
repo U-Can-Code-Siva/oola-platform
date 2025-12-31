@@ -51,6 +51,11 @@ class GitHubService {
       });
       return { success: true, sha: response.data.content.sha };
     } catch (error) {
+      // If file doesn't exist (404), create it instead of updating
+      if (error.status === 404) {
+        console.log('File not found, creating it instead...');
+        return await this.createStoryFile(repo, filename, content, message);
+      }
       console.error('Error updating file:', error.message);
       return { success: false, error: error.message };
     }
